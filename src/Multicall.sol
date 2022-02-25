@@ -26,12 +26,15 @@ contract Multicall {
   /// @notice Thrown when a call fails
   error UnsuccessfulCall();
 
-
   /// >>>>>>>>>>>>>>>>>>>>>>  AGGREGATION  <<<<<<<<<<<<<<<<<<<<<<<< ///
 
   /// @notice Aggregate calls
-  function aggregate(Call[] memory calls) public returns (uint256 blockNumber, bytes[] memory returnData) {
+  /// @dev Backwards compatibility for Multicall V1
+  /// @param calls An array of `Call` objects
+  /// @return (blockNumber, blockHash, returnData) An array of return data and the block number and block hash executed on
+  function aggregate(Call[] memory calls) public returns (uint256 blockNumber, bytes32 blockHash, bytes[] memory returnData) {
     blockNumber = block.number;
+    blockHash = blockhash(block.number);
     returnData = new bytes[](calls.length);
     for(uint256 i = 0; i < calls.length; i++) {
       (bool success, bytes memory ret) = calls[i].target.call(calls[i].callData);
@@ -40,28 +43,19 @@ contract Multicall {
     }
   }
 
-  /// @notice 
-  function blockAndAggregate(Call[] memory calls) public returns (uint256 blockNumber, bytes32 blockHash, Result[] memory returnData) {
-    (blockNumber, blockHash, returnData) = tryBlockAndAggregate(true, calls);
-  }
-
-  function tryAggregate(bool requireSuccess, Call[] memory calls) public returns (Result[] memory returnData) {
+  /// @notice Aggregate calls gracefully without reverting on failure
+  /// @param requireSuccess whether or not to revert on call failure
+  /// @param calls An array of `Call` objects
+  /// @return (blockNumber, blockHash, returnData) An array of return data and the block number and block hash executed on
+  function gracefulAggregate(bool requireSuccess, Call[] memory calls) public returns (uint256 blockNumber, bytes32 blockHash, Result[] memory returnData) {
+    blockNumber = block.number;
+    blockHash = blockhash(block.number);
     returnData = new Result[](calls.length);
     for(uint256 i = 0; i < calls.length; i++) {
       (bool success, bytes memory ret) = calls[i].target.call(calls[i].callData);
-
-      if (requireSuccess) {
-        require(success, "Multicall2 aggregate: call failed");
-      }
-
+      if (requireSuccess && !success) revert UnsuccessfulCall();
       returnData[i] = Result(success, ret);
     }
-  }
-
-  function tryBlockAndAggregate(bool requireSuccess, Call[] memory calls) public returns (uint256 blockNumber, bytes32 blockHash, Result[] memory returnData) {
-    blockNumber = block.number;
-    blockHash = blockhash(block.number);
-    returnData = tryAggregate(requireSuccess, calls);
   }
 
   /// >>>>>>>>>>>>>>>>>>>>>  HELPER METHODS  <<<<<<<<<<<<<<<<<<<<<< ///

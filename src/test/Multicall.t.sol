@@ -15,8 +15,7 @@ contract MulticallTest is DSTestPlus {
   /// >>>>>>>>>>>>>>>>>>>>>>  HELPER TESTS  <<<<<<<<<<<<<<<<<<<<<<< ///
 
   function testGetBlockHash(uint256 blockNumber) public {
-    blockHash = blockhash(blockNumber);
-    assert(blockHash == multicall.getBlockHash(blockNumber));
+    assert(blockhash(blockNumber) == multicall.getBlockHash(blockNumber));
   }
 
   function testGetBlockNumber() public {

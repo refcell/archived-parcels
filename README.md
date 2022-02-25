@@ -4,10 +4,10 @@
 
 <!-- <hr width="80%" /> -->
 
-<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="tests" src="https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg" />
-<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="lints" src="https://github.com/abigger87/parcels/actions/workflows/lints.yml/badge.svg" />
-<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Github" src="https://img.shields.io/github/license/abigger87/parcels" />
-<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Version" src="https://img.shields.io/github/package-json/v/abigger87/parcels" /
+<img style="padding:2px 2px 2px 0;" width="100" align="left" alt="tests" src="https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg" />
+<img style="padding:2px 2px 2px 0;" width="100" align="left" alt="lints" src="https://github.com/abigger87/parcels/actions/workflows/lints.yml/badge.svg" />
+<img style="padding:2px 2px 2px 0;" width="100" align="left" alt="Github" src="https://img.shields.io/github/license/abigger87/parcels" />
+<img style="padding:2px 2px 2px 0;" width="100" align="left" alt="Version" src="https://img.shields.io/github/package-json/v/abigger87/parcels" /
 
 <br />
 <br />

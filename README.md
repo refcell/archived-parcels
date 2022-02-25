@@ -1,6 +1,6 @@
-<table border="0" style="padding:0;margin:0;width:100%;border:none;">
-  <tr border="0" width="100%" style="padding:0;margin:0;">
-    <td border="0" align="left" width="80%" style="padding:0">
+<table border="0" style="padding:0;margin:0;width:100%;border:none!important;">
+  <tr border="0" width="100%" style="padding:0;margin:0;border:none!important;">
+    <td border="0" align="left" width="80%" style="padding:0;border:none!important;">
       <div display="flex">
         <p style="font-size:25px;padding:0;margin:0;">parcels</p>
         <div style="padding:0 20px 0 0;">
@@ -14,7 +14,7 @@
         </div>
       </div>
     </td>
-    <td border="0" width="20%" height="120px" style="min-width:100px;margin:auto;padding:10px 0 0 0;" align="right" height="100%">
+    <td border="0" width="20%" height="120px" style="border:none!important;min-width:100px;margin:auto;padding:10px 0 0 0;" align="right" height="100%">
       <img style="margin:auto;min-width:100px;" width="100" height="100" alt="Parcels" src="./assets/parcels.png" />
     </td>
   </tr>

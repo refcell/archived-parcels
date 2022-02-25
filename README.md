@@ -1,21 +1,17 @@
-<div border="0" style="display:flex;padding:0;margin:0;width:100%;border:none!important;">
-    <div display="flex">
-      <p style="font-size:25px;padding:0;margin:0;">parcels</p>
-      <div style="padding:0 20px 0 0;">
-        <hr />
-      </div>
-      <div style="padding-top:6px;">
-        <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="tests" src="https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg" />
-        <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="lints" src="https://github.com/abigger87/parcels/actions/workflows/lints.yml/badge.svg" />
-        <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Github" src="https://img.shields.io/github/license/abigger87/parcels" />
-        <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Version" src="https://img.shields.io/github/package-json/v/abigger87/parcels" />
-      </div>
-    </div>
-    <div border="0" width="20%" height="120px" style="border:none!important;min-width:100px;margin:auto;padding:10px 0 0 0;" align="right" height="100%">
-      <img style="margin:auto;min-width:100px;" width="100" height="100" alt="Parcels" src="./assets/parcels.png" />
-    </div>
-</div>
+<img align="right" width="150" height="150" top="100" src="./assets/parcels.png">
 
+# parcels
+
+<!-- <hr width="80%" /> -->
+
+<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="tests" src="https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg" />
+<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="lints" src="https://github.com/abigger87/parcels/actions/workflows/lints.yml/badge.svg" />
+<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Github" src="https://img.shields.io/github/license/abigger87/parcels" />
+<img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Version" src="https://img.shields.io/github/package-json/v/abigger87/parcels" /
+
+<br />
+<br />
+<br />
 
 A Modern, Opinionated Multicall Library
 

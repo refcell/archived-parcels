@@ -1,19 +1,19 @@
 <img align="right" width="150" height="150" top="100" src="./assets/parcels.png">
 
-# parcels
+# parcels • [![tests](https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg)](https://github.com/abigger87/parcels/actions/workflows/tests.yml) [![lints](https://github.com/abigger87/parcels/actions/workflows/lints.yml/badge.svg)](https://github.com/abigger87/parcels/actions/workflows/lints.yml) ![GitHub](https://img.shields.io/github/license/abigger87/parcels)  ![GitHub package.json version](https://img.shields.io/github/package-json/v/abigger87/parcels)
 
 <!-- <hr width="80%" /> -->
 
-<img style="padding:2px 2px 2px 0;margin:0;" align="left" alt="tests" src="https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg" />
+<!-- <img style="padding:2px 2px 2px 0;margin:0;" align="left" alt="tests" src="https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg" />
 <img style="padding:2px 2px 2px 0;margin:0;" align="left" alt="lints" src="https://github.com/abigger87/parcels/actions/workflows/lints.yml/badge.svg" />
 <img style="padding:2px 2px 2px 0;margin:0;" align="left" alt="Github" src="https://img.shields.io/github/license/abigger87/parcels" />
 <img style="padding:2px 2px 2px 0;margin:0;" align="left" alt="Version" src="https://img.shields.io/github/package-json/v/abigger87/parcels" /
+ -->
+<!-- <br />
+<br />
+<br /> -->
 
-<br />
-<br />
-<br />
-
-A Modern, Opinionated Multicall Library
+A Rigorously Tested, Modern, Opinionated Multicall Library
 
 ## Overview
 

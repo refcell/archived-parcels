@@ -3,13 +3,22 @@ pragma solidity 0.8.11;
 
 import {Multicall} from "../Multicall.sol";
 import {DSTestPlus} from "./utils/DSTestPlus.sol";
+import {MockCallee} from "./mocks/MockCallee.sol";
 
 contract MulticallTest is DSTestPlus {
   Multicall multicall;
+  MockCallee callee;
 
   /// @notice Setups up the testing suite
   function setUp() public {
     multicall = new Multicall();
+    callee = new MockCallee();
+  }
+
+  /// >>>>>>>>>>>>>>>>>>>>  AGGREGATION TESTS  <<<<<<<<<<<<<<<<<<<< ///
+
+  function testAggregation() public {
+    assert(multicall.aggregate(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) == 55);
   }
 
   /// >>>>>>>>>>>>>>>>>>>>>>  HELPER TESTS  <<<<<<<<<<<<<<<<<<<<<<< ///
@@ -43,6 +52,8 @@ contract MulticallTest is DSTestPlus {
   }
 
   function testGetLastBlockHash() public {
+    // Prevent arithmetic underflow on the genesis block
+    if(block.number == 0) return;
     assert(blockhash(block.number - 1) == multicall.getLastBlockHash());
   }
 }

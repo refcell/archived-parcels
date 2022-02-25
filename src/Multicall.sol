@@ -21,7 +21,7 @@ contract Multicall {
     bytes returnData;
   }
 
-  /// >>>>>>>>>>>>>>>>>>>>>  CUSTOM STRUCTS  <<<<<<<<<<<<<<<<<<<<<< ///
+  /// >>>>>>>>>>>>>>>>>>>>>  CUSTOM ERRORS  <<<<<<<<<<<<<<<<<<<<<< ///
 
   /// @notice Thrown when a call fails
   error UnsuccessfulCall();
@@ -31,7 +31,9 @@ contract Multicall {
   /// @notice Aggregate calls
   /// @dev Backwards compatibility for Multicall V1
   /// @param calls An array of `Call` objects
-  /// @return (blockNumber, blockHash, returnData) An array of return data and the block number and block hash executed on
+  /// @return blockNumber The block number executed on
+  /// @return blockHash The block hash executed on
+  /// @return returnData An array of return data
   function aggregate(Call[] memory calls) public returns (uint256 blockNumber, bytes32 blockHash, bytes[] memory returnData) {
     blockNumber = block.number;
     blockHash = blockhash(block.number);
@@ -46,7 +48,9 @@ contract Multicall {
   /// @notice Aggregate calls gracefully without reverting on failure
   /// @param requireSuccess whether or not to revert on call failure
   /// @param calls An array of `Call` objects
-  /// @return (blockNumber, blockHash, returnData) An array of return data and the block number and block hash executed on
+  /// @return blockNumber The block number executed on
+  /// @return blockHash The block hash executed on
+  /// @return returnData An array of return data
   function gracefulAggregate(bool requireSuccess, Call[] memory calls) public returns (uint256 blockNumber, bytes32 blockHash, Result[] memory returnData) {
     blockNumber = block.number;
     blockHash = blockhash(block.number);
@@ -86,7 +90,7 @@ contract Multicall {
   }
 
   /// @notice Returns the block gas limit
-  /// @return gasLimit The 32 byte (256 bits) unsigned block gas limit
+  /// @return gaslimit The 32 byte (256 bits) unsigned block gas limit
   function getCurrentBlockGasLimit() public view returns (uint256 gaslimit) {
     gaslimit = block.gaslimit;
   }

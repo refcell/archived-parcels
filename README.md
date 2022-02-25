@@ -1,4 +1,4 @@
-<table style="padding:0;margin:0;width:100%;">
+<table border="0" style="padding:0;margin:0;width:100%;border:0px;">
   <tr width="100%" style="padding:0;margin:0;">
     <td align="left" width="80%" style="padding:0">
       <div display="flex">

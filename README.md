@@ -1,6 +1,33 @@
-# foundry-starter  • [![tests](https://github.com/abigger87/foundry-starter/actions/workflows/tests.yml/badge.svg)](https://github.com/abigger87/foundry-starter/actions/workflows/tests.yml) [![lints](https://github.com/abigger87/foundry-starter/actions/workflows/lints.yml/badge.svg)](https://github.com/abigger87/foundry-starter/actions/workflows/lints.yml) ![GitHub](https://img.shields.io/github/license/abigger87/foundry-starter) ![GitHub package.json version](https://img.shields.io/github/package-json/v/abigger87/foundry-starter)
+<table style="padding:0;margin:0;width:100%;">
+  <tr width="100%" style="padding:0;margin:0;">
+    <td align="left" width="80%" style="padding:0">
+      <div display="flex">
+        <p style="font-size:25px;padding:0;margin:0;">parcels</p>
+        <div style="padding:0 20px 0 0;">
+          <hr />
+        </div>
+        <div style="padding-top:6px;">
+          <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="tests" src="https://github.com/abigger87/parcels/actions/workflows/tests.yml/badge.svg" />
+          <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="lints" src="https://github.com/abigger87/parcels/actions/workflows/lints.yml/badge.svg" />
+          <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Github" src="https://img.shields.io/github/license/abigger87/parcels" />
+          <img style="padding:5px 5px 5px 0;" width="100" align="left" alt="Version" src="https://img.shields.io/github/package-json/v/abigger87/parcels" />
+        </div>
+      </div>
+    </td>
+    <td width="20%" height="120px" style="min-width:100px;margin:auto;padding:10px 0 0 0;" align="right" height="100%">
+      <img style="margin:auto;min-width:100px;" width="100" height="100" alt="Parcels" src="./assets/parcels.png" />
+    </td>
+  </tr>
+</table>
 
-Backwards Compatible Template for Foundry and DappTools Projects 
+
+A Modern, Opinionated Multicall Library
+
+## Overview
+
+Adapted from Makerdao's [`multicall`](), this library provides a simple way to call multiple contracts at once.
+
+Built with [`foundry`](https://github.com/gakonst/foundry), parcels is rigorously tested and maintained.
 
 ## Blueprint
 
@@ -17,11 +44,6 @@ src
 ```
 
 ## Development
-
-[foundry-starter](https://github.com/abigger87/foundry-starter) is intended to be minimal while also providing backwards compatibility. Thus, both [DappTools](https://dapp.tools/) and [Foundry](https://github.com/gaskonst/foundry) are supported. Installation instructions for both are included below.
-#### Install DappTools
-
-Install DappTools using their [installation guide](https://github.com/dapphub/dapptools#installation).
 
 #### First time with Forge/Foundry?
 
@@ -49,6 +71,10 @@ foundryup
 
 🎉 Foundry is installed! 🎉
 
+#### Configure Foundry
+
+Using [foundry.toml](./foundry.toml), Foundry is easily configurable.
+
 #### Setup
 
 ```bash
@@ -56,6 +82,11 @@ make
 # OR #
 make setup
 ```
+
+#### Install DappTools
+
+Install DappTools using their [installation guide](https://github.com/dapphub/dapptools#installation).
+
 
 #### Build
 
@@ -69,13 +100,9 @@ make build
 make test
 ```
 
-#### Configure Foundry
-
-Using [foundry.toml](./foundry.toml), Foundry is easily configurable.
-
 ## License
 
-[AGPL-3.0-only](https://github.com/abigger87/foundry-starter/blob/master/LICENSE)
+[AGPL-3.0-only](https://github.com/abigger87/parcels/blob/master/LICENSE)
 
 # Acknowledgements
 

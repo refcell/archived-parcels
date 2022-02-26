@@ -13,6 +13,7 @@ contract Multicall {
   struct Call {
     address target;
     bytes callData;
+    bool requireSuccess;
   }
 
   /// @notice A call result
@@ -40,25 +41,8 @@ contract Multicall {
     returnData = new bytes[](calls.length);
     for(uint256 i = 0; i < calls.length; i++) {
       (bool success, bytes memory ret) = calls[i].target.call(calls[i].callData);
-      if (!success) revert UnsuccessfulCall();
+      if (calls[i].requireSuccess && !success) revert UnsuccessfulCall();
       returnData[i] = ret;
-    }
-  }
-
-  /// @notice Aggregate calls gracefully without reverting on failure
-  /// @param requireSuccess whether or not to revert on call failure
-  /// @param calls An array of `Call` objects
-  /// @return blockNumber The block number executed on
-  /// @return blockHash The block hash executed on
-  /// @return returnData An array of return data
-  function gracefulAggregate(bool requireSuccess, Call[] memory calls) public returns (uint256 blockNumber, bytes32 blockHash, Result[] memory returnData) {
-    blockNumber = block.number;
-    blockHash = blockhash(block.number);
-    returnData = new Result[](calls.length);
-    for(uint256 i = 0; i < calls.length; i++) {
-      (bool success, bytes memory ret) = calls[i].target.call(calls[i].callData);
-      if (requireSuccess && !success) revert UnsuccessfulCall();
-      returnData[i] = Result(success, ret);
     }
   }
 

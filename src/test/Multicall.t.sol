@@ -22,7 +22,8 @@ contract MulticallTest is DSTestPlus {
     Multicall.Call[] memory calls = new Multicall.Call[](1);
     calls[0] = Multicall.Call(
         address(callee),
-        abi.encodeWithSignature("getBlockHash(uint256)", block.number)
+        abi.encodeWithSignature("getBlockHash(uint256)", block.number),
+        false
     );
     (
         uint256 blockNumber,
@@ -34,18 +35,19 @@ contract MulticallTest is DSTestPlus {
     assert(keccak256(returnData[0]) == keccak256(abi.encodePacked(blockhash(block.number))));
   }
 
-  function testUnsuccessulAggregation() public {
+  function testGracefulAggregation() public {
     // Test unexpected revert
     Multicall.Call[] memory calls = new Multicall.Call[](2);
     calls[0] = Multicall.Call(
         address(callee),
-        abi.encodeWithSignature("getBlockHash(uint256)", block.number)
+        abi.encodeWithSignature("getBlockHash(uint256)", block.number),
+        false
     );
     calls[1] = Multicall.Call(
         address(callee),
-        abi.encodeWithSignature("thisMethodReverts()")
+        abi.encodeWithSignature("thisMethodReverts()"),
+        false
     );
-    vm.expectRevert(abi.encodePacked(bytes4(keccak256("UnsuccessfulCall()"))));
     (
         uint256 blockNumber,
         bytes32 blockHash,
@@ -53,45 +55,25 @@ contract MulticallTest is DSTestPlus {
     ) = multicall.aggregate(calls);
   }
 
-  function testGracefulAggregation() public {
-    // Test successful call
-    Multicall.Call[] memory calls = new Multicall.Call[](1);
-    calls[0] = Multicall.Call(
-        address(callee),
-        abi.encodeWithSignature("getBlockHash(uint256)", block.number)
-    );
-    (
-        uint256 blockNumber,
-        bytes32 blockHash,
-        Multicall.Result[] memory returnData
-    ) = multicall.gracefulAggregate(false, calls);
-    assert(blockNumber == block.number);
-    assert(blockHash == blockhash(block.number));
-    assert(returnData[0].success == true);
-    assert(keccak256(returnData[0].returnData) == keccak256(abi.encodePacked(blockhash(block.number))));
-  }
-
-  function testRevertGracefulAggregation() public {
+  function testUnsuccessulAggregation() public {
     // Test unexpected revert
     Multicall.Call[] memory calls = new Multicall.Call[](2);
     calls[0] = Multicall.Call(
         address(callee),
-        abi.encodeWithSignature("getBlockHash(uint256)", block.number)
+        abi.encodeWithSignature("getBlockHash(uint256)", block.number),
+        false
     );
     calls[1] = Multicall.Call(
         address(callee),
-        abi.encodeWithSignature("thisMethodReverts()")
+        abi.encodeWithSignature("thisMethodReverts()"),
+        true
     );
+    vm.expectRevert(abi.encodePacked(bytes4(keccak256("UnsuccessfulCall()"))));
     (
         uint256 blockNumber,
         bytes32 blockHash,
-        Multicall.Result[] memory returnData
-    ) = multicall.gracefulAggregate(false, calls);
-    assert(blockNumber == block.number);
-    assert(blockHash == blockhash(block.number));
-    assert(returnData[0].success == true);
-    assert(keccak256(returnData[0].returnData) == keccak256(abi.encodePacked(blockhash(block.number))));
-    assert(returnData[1].success == false);
+        bytes[] memory returnData
+    ) = multicall.aggregate(calls);
   }
 
   /// >>>>>>>>>>>>>>>>>>>>>>  HELPER TESTS  <<<<<<<<<<<<<<<<<<<<<<< ///

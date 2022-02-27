@@ -15,6 +15,17 @@
 
 A Rigorously Tested, Modern, Opinionated Multicall Library
 
+
+**⚠️ Depreciation Notice ⚠️**
+-------------------------
+-------------------------
+
+This Repository is not maintained and is only used as a Proof-of-Concept for [Multicall3](https://github.com/mds1/multicall) as part of [Matt Solomon](https://github.com/mds1)'s maintained [multicall repository](https://github.com/mds1/multicall).
+
+[mds1/multicall](https://github.com/mds1/multicall) is an actively maintained fork from MakerDAO's inactive [multicall repository](https://github.com/makerdao/multicall).
+
+-------------------------
+
 ## Overview
 
 Adapted from Makerdao's [`multicall`](https://github.com/makerdao/multicall), this library provides a simple way to call multiple contracts at once.
